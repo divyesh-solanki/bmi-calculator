@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-const bottomContainerHeight = 60.0; 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+const bottomContainerHeight = 60.0;
 const bottomContainerColor = Color(0xFFEB1555);
 const activeCardColor = Color(0xFF1D1F33);
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -20,10 +23,22 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: ReusableCard(colour: activeCardColor),
+                  child: ReusableCard(
+                    colour: activeCardColor,
+                    cardChild: GenderCard(
+                      genderName: 'MALE',
+                      genderIcon: FontAwesomeIcons.mars,
+                    ),
+                  ),
                 ),
                 Expanded(
-                  child: ReusableCard(colour: activeCardColor),
+                  child: ReusableCard(
+                    colour: activeCardColor,
+                    cardChild: GenderCard(
+                      genderName: 'FEMALE',
+                      genderIcon: FontAwesomeIcons.venus,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -55,12 +70,41 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
+class GenderCard extends StatelessWidget {
+  final String genderName;
+  final IconData genderIcon;
+  GenderCard({this.genderIcon, this.genderName});
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Icon(
+          genderIcon,
+          size: 80,
+        ),
+        SizedBox(
+          height: 10.0,
+        ),
+        Text(
+          genderName,
+          style: TextStyle(
+            fontSize: 18.0,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class ReusableCard extends StatelessWidget {
-  final Color colour; // = Color(0xFF1D1F33);
-  ReusableCard({this.colour});
+  final Color colour;
+  final Widget cardChild;
+  ReusableCard({@required this.colour, this.cardChild});
   @override
   Widget build(BuildContext context) {
     return Container(
+      child: cardChild,
       margin: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         color: colour,
