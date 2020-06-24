@@ -11,7 +11,7 @@ class GenderCardContent extends StatelessWidget {
       children: <Widget>[
         Icon(
           genderIcon,
-          size: 80,
+          size: 70,
           //color: Color(0xFF8E8E9C),
         ),
         SizedBox(

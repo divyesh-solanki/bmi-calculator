@@ -27,7 +27,7 @@ class _InputPageState extends State<InputPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
-            flex: 3,
+            flex: 4,
             child: Row(
               children: <Widget>[
                 Expanded(
@@ -68,7 +68,7 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Expanded(
-            flex: 3,
+            flex: 5,
             child: ReusableCard(
               colour: kactiveCardColor,
               cardChild: Column(
@@ -117,14 +117,74 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Expanded(
-            flex: 3,
+            flex: 4,
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: ReusableCard(colour: kactiveCardColor),
+                  child: ReusableCard(
+                    colour: kactiveCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'WEIGHT',
+                          style: klabelTextStyle,
+                        ),
+                        Text(
+                          '45',
+                          style: kheavyTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            IconButton(
+                              icon: Icon(FontAwesomeIcons.minus),
+                              onPressed: () {},
+                            ),
+                            IconButton(
+                              icon: Icon(
+                                FontAwesomeIcons.plus,
+                              ),
+                              onPressed: () {},
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 Expanded(
-                  child: ReusableCard(colour: kactiveCardColor),
+                  child: ReusableCard(
+                    colour: kactiveCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'AGE',
+                          style: klabelTextStyle,
+                        ),
+                        Text(
+                          '22',
+                          style: kheavyTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            IconButton(
+                              icon: Icon(FontAwesomeIcons.minus),
+                              onPressed: () {},
+                            ),
+                            IconButton(
+                              icon: Icon(
+                                FontAwesomeIcons.plus,
+                              ),
+                              onPressed: () {},
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
