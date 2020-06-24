@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'reusable_card.dart';
+import 'gender_card_content.dart';
 
 const bottomContainerHeight = 60.0;
 const bottomContainerColor = Color(0xFFEB1555);
@@ -25,7 +27,7 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     colour: activeCardColor,
-                    cardChild: GenderCard(
+                    cardChild: GenderCardContent(
                       genderName: 'MALE',
                       genderIcon: FontAwesomeIcons.mars,
                     ),
@@ -34,7 +36,7 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     colour: activeCardColor,
-                    cardChild: GenderCard(
+                    cardChild: GenderCardContent(
                       genderName: 'FEMALE',
                       genderIcon: FontAwesomeIcons.venus,
                     ),
@@ -70,46 +72,5 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class GenderCard extends StatelessWidget {
-  final String genderName;
-  final IconData genderIcon;
-  GenderCard({this.genderIcon, this.genderName});
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Icon(
-          genderIcon,
-          size: 80,
-        ),
-        SizedBox(
-          height: 10.0,
-        ),
-        Text(
-          genderName,
-          style: TextStyle(
-            fontSize: 18.0,
-          ),
-        ),
-      ],
-    );
-  }
-}
 
-class ReusableCard extends StatelessWidget {
-  final Color colour;
-  final Widget cardChild;
-  ReusableCard({@required this.colour, this.cardChild});
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: cardChild,
-      margin: EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-        color: colour,
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-    );
-  }
-}
+
