@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'reusable_card.dart';
 import 'gender_card_content.dart';
 import 'constants.dart';
+import 'round_icon_button.dart';
 
 enum Gender {
   male,
@@ -17,6 +18,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int height = 180;
+  int weight = 60;
+  int age = 22;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,21 +134,33 @@ class _InputPageState extends State<InputPage> {
                           style: klabelTextStyle,
                         ),
                         Text(
-                          '45',
+                          weight.toString(),
                           style: kheavyTextStyle,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            IconButton(
-                              icon: Icon(FontAwesomeIcons.minus),
-                              onPressed: () {},
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              //newWeight: weight,
+                              onPress: () {
+                                setState(() {
+                                  if (weight > 1) {
+                                    weight--;
+                                  }
+                                });
+                              },
                             ),
-                            IconButton(
-                              icon: Icon(
-                                FontAwesomeIcons.plus,
-                              ),
-                              onPressed: () {},
+                            SizedBox(
+                              width: 15,
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPress: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
                             ),
                           ],
                         ),
@@ -164,21 +179,32 @@ class _InputPageState extends State<InputPage> {
                           style: klabelTextStyle,
                         ),
                         Text(
-                          '22',
+                          age.toString(),
                           style: kheavyTextStyle,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            IconButton(
-                              icon: Icon(FontAwesomeIcons.minus),
-                              onPressed: () {},
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPress: () {
+                                setState(() {
+                                  if (age > 1) {
+                                    age--;
+                                  }
+                                });
+                              },
                             ),
-                            IconButton(
-                              icon: Icon(
-                                FontAwesomeIcons.plus,
-                              ),
-                              onPressed: () {},
+                            SizedBox(
+                              width: 15,
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPress: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
                             ),
                           ],
                         ),
@@ -194,6 +220,12 @@ class _InputPageState extends State<InputPage> {
             width: double.infinity,
             margin: EdgeInsets.only(top: 10),
             color: kbottomContainerColor,
+            child: FlatButton(
+                onPressed: () {},
+                child: Text(
+                  'CALCULATE YOUR BMI',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                )),
           ),
         ],
       ),
