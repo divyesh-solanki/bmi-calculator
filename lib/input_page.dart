@@ -4,7 +4,7 @@ import 'reusable_card.dart';
 import 'gender_card_content.dart';
 import 'constants.dart';
 import 'round_icon_button.dart';
-
+import 'result_page.dart';
 enum Gender {
   male,
   female,
@@ -221,7 +221,11 @@ class _InputPageState extends State<InputPage> {
             margin: EdgeInsets.only(top: 10),
             color: kbottomContainerColor,
             child: FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,MaterialPageRoute(builder: (context){
+                    return ResultPage();
+                  }) );
+                },
                 child: Text(
                   'CALCULATE YOUR BMI',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
