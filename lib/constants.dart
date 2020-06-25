@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const kbottomContainerHeight = 50.0;
+const kbottomContainerHeight = 70.0;
 const kbottomContainerColor = Color(0xFFEB1555);
 const kactiveCardColor = Color(0xFF1D1F33);
 const kinactiveCardColor = Color(0xFF111328);
@@ -12,3 +12,4 @@ const kheavyTextStyle = TextStyle(
   fontSize: 40,
   fontWeight: FontWeight.w900,
 );
+

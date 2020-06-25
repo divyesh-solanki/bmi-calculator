@@ -1,10 +1,12 @@
+import 'package:bmi_calculator/screens/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'reusable_card.dart';
-import 'gender_card_content.dart';
-import 'constants.dart';
-import 'round_icon_button.dart';
-import 'result_page.dart';
+import '../components/reusable_card.dart';
+import '../components/gender_card_content.dart';
+import '../constants.dart';
+import '../components/round_icon_button.dart';
+import '../components/bottom_button.dart';
+import 'package:bmi_calculator/bmi_brain.dart';
 enum Gender {
   male,
   female,
@@ -30,7 +32,7 @@ class _InputPageState extends State<InputPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
-            flex: 4,
+            //flex: 4,
             child: Row(
               children: <Widget>[
                 Expanded(
@@ -71,7 +73,7 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Expanded(
-            flex: 5,
+            //flex: 5,
             child: ReusableCard(
               colour: kactiveCardColor,
               cardChild: Column(
@@ -120,7 +122,7 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Expanded(
-            flex: 4,
+            //flex: 4,
             child: Row(
               children: <Widget>[
                 Expanded(
@@ -215,21 +217,23 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            height: kbottomContainerHeight,
-            width: double.infinity,
-            margin: EdgeInsets.only(top: 10),
-            color: kbottomContainerColor,
-            child: FlatButton(
-                onPressed: () {
-                  Navigator.push(context,MaterialPageRoute(builder: (context){
-                    return ResultPage();
-                  }) );
-                },
-                child: Text(
-                  'CALCULATE YOUR BMI',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                )),
+          BottomButton(
+            buttonTitle: 'CALCULATE YOUR BMI',
+            onPress: () {
+              BMIBrain calc = BMIBrain(height: height,weight: weight);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return ResultPage(
+                      bmi: calc.calculateBMI(),
+                      resultText: calc.getResult(),
+                      bmiInterpretation: calc.getInterpretation(),
+                    );
+                  },
+                ),
+              );
+            },
           ),
         ],
       ),
